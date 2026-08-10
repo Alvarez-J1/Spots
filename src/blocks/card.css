@@ -6,6 +6,7 @@
   background: transparent;
   line-height: 0;
   cursor: pointer;
+  border-radius: 8px;
 }
 
 .card__image {
