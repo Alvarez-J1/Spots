@@ -265,6 +265,7 @@
           role="dialog"
           aria-modal="true"
           aria-labelledby="add-card-title"
+          aria-describedby="add-card-description"
         >
           <button
             type="button"
@@ -273,6 +274,9 @@
             aria-label="Close new post dialog"
           ></button>
           <h2 class="modal__title" id="add-card-title">New post</h2>
+          <p id="add-card-description" class="visually-hidden">
+            Add an image link and caption to create a new post.
+          </p>
           <form name="card-form" class="modal__form" novalidate>
             <label for="add-card-link-input" class="modal__label">
               Image link
