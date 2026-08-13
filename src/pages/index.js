@@ -191,6 +191,7 @@ function showCardsStatus(message) {
 function clearCardsStatus() {
   cardsStatus.hidden = true;
   cardsStatus.textContent = "";
+  cardsSection.removeAttribute("aria-describedby");
 }
 
 function getSubmitButton(form, evt) {
