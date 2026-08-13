@@ -253,6 +253,10 @@ function getCardElement(data) {
 
 let lastFocusedElement;
 
+function getFocusableElements(modal) {
+  return Array.from(modal.querySelectorAll(FOCUSABLE_SELECTOR));
+}
+
 function openModal(modal) {
   if (!modal) {
     return;
