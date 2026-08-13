@@ -400,6 +400,7 @@
         role="dialog"
         aria-modal="true"
         aria-labelledby="edit-avatar-title"
+        aria-describedby="edit-avatar-description"
       >
         <button
           type="button"
@@ -408,6 +409,9 @@
           aria-label="Close edit avatar dialog"
         ></button>
         <h2 class="modal__title" id="edit-avatar-title">Edit profile avatar</h2>
+        <p id="edit-avatar-description" class="visually-hidden">
+          Paste an image URL to update your profile avatar.
+        </p>
         <form
           name="avatar-form"
           class="modal__form"
