@@ -334,11 +334,15 @@ function trapModalFocus(event, modal) {
 }
 
 function handleModalKeydown(event) {
+  const openModal = document.querySelector(".modal_opened");
+  if (!openModal) {
+    return;
+  }
+
   if (event.key === "Escape") {
-    const openModal = document.querySelector(".modal_opened");
-    if (openModal) {
-      closeModal(openModal);
-    }
+    closeModal(openModal);
+  } else if (event.key === "Tab") {
+    trapModalFocus(event, openModal);
   }
 }
 
