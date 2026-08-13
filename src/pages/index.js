@@ -270,7 +270,7 @@ function openModal(modal) {
   const firstInput = modal.querySelector(".modal__input");
   const closeBtn = modal.querySelector(".modal__close-btn");
   if (firstInput) {
-    firstInput.focus();
+    firstInput.focus({ preventScroll: true });
   } else if (closeBtn) {
     closeBtn.focus();
   }
