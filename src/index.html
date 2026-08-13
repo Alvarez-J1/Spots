@@ -192,6 +192,7 @@
           role="dialog"
           aria-modal="true"
           aria-labelledby="edit-profile-title"
+          aria-describedby="edit-profile-description"
         >
           <button
             type="button"
@@ -199,6 +200,9 @@
             aria-label="Close edit profile dialog"
           ></button>
           <h2 class="modal__title" id="edit-profile-title">Edit profile</h2>
+          <p id="edit-profile-description" class="visually-hidden">
+            Update your public name and profile description.
+          </p>
           <form name="profile-form" class="modal__form" novalidate>
             <label for="profile-name-input" class="modal__label">
               Name
