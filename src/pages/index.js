@@ -432,6 +432,7 @@ function handleDeleteSubmit(evt) {
     .removeCard(selectedCardId)
     .then(() => {
       selectedCard.remove();
+      lastFocusedElement = cardsList;
       updateCardsEmptyState();
       clearCardsStatus();
       closeModal(deleteModal);
