@@ -185,6 +185,7 @@ function updateCardsEmptyState() {
 function showCardsStatus(message) {
   cardsStatus.textContent = message || DEFAULT_CARDS_STATUS_MESSAGE;
   cardsStatus.hidden = false;
+  cardsSection.setAttribute("aria-describedby", "cards-status");
 }
 
 function clearCardsStatus() {
