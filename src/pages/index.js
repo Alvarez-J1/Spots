@@ -272,7 +272,7 @@ function openModal(modal) {
   if (firstInput) {
     firstInput.focus({ preventScroll: true });
   } else if (closeBtn) {
-    closeBtn.focus();
+    closeBtn.focus({ preventScroll: true });
   }
 }
 
