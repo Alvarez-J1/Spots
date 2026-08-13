@@ -271,7 +271,7 @@ function openModal(modal) {
   modal.setAttribute("aria-hidden", "false");
   document.body.classList.add("modal-open");
   mainContent.inert = true;
-  document.addEventListener("keydown", handleEscapeKey);
+  document.addEventListener("keydown", handleModalKeydown);
   modal.querySelectorAll(".modal__form").forEach(clearFormError);
   const firstInput = modal.querySelector(".modal__input");
   const closeBtn = modal.querySelector(".modal__close-btn");
@@ -295,7 +295,7 @@ function closeModal(modal) {
   modal.setAttribute("aria-hidden", "true");
   document.body.classList.remove("modal-open");
   mainContent.inert = false;
-  document.removeEventListener("keydown", handleEscapeKey);
+  document.removeEventListener("keydown", handleModalKeydown);
   if (modal === previewModal) {
     previewModalImageEl.removeAttribute("src");
     previewModalImageEl.alt = "";
@@ -312,7 +312,7 @@ function closeModal(modal) {
   lastFocusedElement = undefined;
 }
 
-function handleEscapeKey(event) {
+function handleModalKeydown(event) {
   if (event.key === "Escape") {
     const openModal = document.querySelector(".modal_opened");
     if (openModal) {
