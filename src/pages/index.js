@@ -164,6 +164,7 @@ api
         ? err.message
         : PROFILE_LOAD_ERROR_MESSAGE;
     profileLoadError.hidden = false;
+    profileSection.setAttribute("aria-describedby", "profile-load-error");
     showCardsStatus(CARDS_LOAD_ERROR_MESSAGE);
   })
   .finally(() => {
