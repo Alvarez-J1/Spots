@@ -46,3 +46,15 @@ export function clearFormError(formEl) {
     errorEl.textContent = "";
   }
 }
+
+export function setFormBusy(formEl, isBusy) {
+  if (!formEl) {
+    return;
+  }
+
+  if (isBusy) {
+    formEl.setAttribute("aria-busy", "true");
+  } else {
+    formEl.removeAttribute("aria-busy");
+  }
+}
