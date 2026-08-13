@@ -3,6 +3,7 @@ import {
   setButtonText,
   showFormError,
   clearFormError,
+  setFormBusy,
 } from "../utils/helpers.js";
 import editBtnSrc from "../images/editBtnSrc.svg";
 import plusSrc from "../images/plus.svg";
@@ -401,6 +402,7 @@ function handleEditFormSubmit(evt) {
   const form = evt.target;
   clearFormError(form);
   const submitBtn = getSubmitButton(form, evt);
+  setFormBusy(form, true);
   setButtonText(submitBtn, true);
 
   api
@@ -420,6 +422,7 @@ function handleEditFormSubmit(evt) {
       showFormError(form, err?.message);
     })
     .finally(() => {
+      setFormBusy(form, false);
       setButtonText(submitBtn, false);
     });
 }
