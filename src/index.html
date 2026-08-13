@@ -337,6 +337,7 @@
           role="dialog"
           aria-modal="true"
           aria-labelledby="preview-caption"
+          aria-describedby="preview-description"
         >
           <button
             aria-label="Close image preview"
@@ -345,6 +346,9 @@
           ></button>
           <img class="modal__image" src="" alt="" decoding="async" />
           <p class="modal__caption" id="preview-caption"></p>
+          <p id="preview-description" class="visually-hidden">
+            Full-size preview of the selected post image.
+          </p>
         </div>
       </div>
     </div>
