@@ -312,6 +312,27 @@ function closeModal(modal) {
   lastFocusedElement = undefined;
 }
 
+function trapModalFocus(event, modal) {
+  const focusableElements = getFocusableElements(modal);
+  if (focusableElements.length === 0) {
+    return;
+  }
+
+  const firstFocusableElement = focusableElements[0];
+  const lastFocusableElement = focusableElements[focusableElements.length - 1];
+
+  if (event.shiftKey && document.activeElement === firstFocusableElement) {
+    event.preventDefault();
+    lastFocusableElement.focus({ preventScroll: true });
+  } else if (
+    !event.shiftKey &&
+    document.activeElement === lastFocusableElement
+  ) {
+    event.preventDefault();
+    firstFocusableElement.focus({ preventScroll: true });
+  }
+}
+
 function handleModalKeydown(event) {
   if (event.key === "Escape") {
     const openModal = document.querySelector(".modal_opened");
