@@ -463,6 +463,7 @@ function handleDeleteSubmit(evt) {
     return;
   }
   const submitBtn = getSubmitButton(form, evt);
+  setFormBusy(form, true);
   setButtonText(submitBtn, true, DELETE_BUTTON_TEXT, DELETE_LOADING_TEXT);
   api
     .removeCard(selectedCardId)
@@ -478,6 +479,7 @@ function handleDeleteSubmit(evt) {
       showFormError(form, err?.message);
     })
     .finally(() => {
+      setFormBusy(form, false);
       setButtonText(submitBtn, false, DELETE_BUTTON_TEXT, DELETE_LOADING_TEXT);
     });
 }
