@@ -493,6 +493,7 @@ function handleAddCardSubmit(evt) {
   const form = evt.target;
   clearFormError(form);
   const submitBtn = getSubmitButton(form, evt);
+  setFormBusy(form, true);
   setButtonText(submitBtn, true);
   const inputValues = {
     name: cardNameInput.value.trim(),
@@ -512,6 +513,7 @@ function handleAddCardSubmit(evt) {
       showFormError(form, err?.message);
     })
     .finally(() => {
+      setFormBusy(form, false);
       setButtonText(submitBtn, false);
     });
 }
