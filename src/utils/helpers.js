@@ -53,6 +53,7 @@ export function clearFormError(formEl) {
   if (errorEl) {
     errorEl.hidden = true;
     errorEl.textContent = "";
+    formEl.removeAttribute("aria-describedby");
   }
 }
 
