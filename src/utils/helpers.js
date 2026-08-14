@@ -1,5 +1,9 @@
 const FORM_ERROR_CLASS = "modal__form-error";
 
+function getFormErrorId(formEl) {
+  return `${formEl.id || formEl.name || "modal"}-form-error`;
+}
+
 export function setButtonText(
   submitBtn,
   isLoading,
