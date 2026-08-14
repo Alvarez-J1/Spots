@@ -268,6 +268,13 @@ function getDialogTrigger(element, modal) {
   return element.getAttribute("aria-controls") === modal.id ? element : null;
 }
 
+function getInitialModalFocusElement(modal) {
+  return (
+    modal.querySelector(".modal__input") ||
+    modal.querySelector(".modal__close-btn")
+  );
+}
+
 function openModal(modal) {
   if (!modal) {
     return;
