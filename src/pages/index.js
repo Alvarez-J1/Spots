@@ -260,6 +260,14 @@ function getFocusableElements(modal) {
   return Array.from(modal.querySelectorAll(FOCUSABLE_SELECTOR));
 }
 
+function getDialogTrigger(element, modal) {
+  if (!element?.matches?.(DIALOG_TRIGGER_SELECTOR)) {
+    return null;
+  }
+
+  return element.getAttribute("aria-controls") === modal.id ? element : null;
+}
+
 function openModal(modal) {
   if (!modal) {
     return;
