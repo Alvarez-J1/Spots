@@ -35,6 +35,7 @@ export function showFormError(formEl, message) {
   let errorEl = formEl.querySelector(`.${FORM_ERROR_CLASS}`);
   if (!errorEl) {
     errorEl = document.createElement("p");
+    errorEl.id = getFormErrorId(formEl);
     errorEl.className = FORM_ERROR_CLASS;
     errorEl.setAttribute("role", "alert");
     errorEl.setAttribute("aria-live", "assertive");
