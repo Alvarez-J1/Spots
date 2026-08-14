@@ -278,6 +278,8 @@ function openModal(modal) {
   }
 
   lastFocusedElement = document.activeElement;
+  activeDialogTrigger = getDialogTrigger(lastFocusedElement, modal);
+  activeDialogTrigger?.setAttribute("aria-expanded", "true");
   modal.classList.add("modal_opened");
   modal.setAttribute("aria-hidden", "false");
   document.body.classList.add("modal-open");
