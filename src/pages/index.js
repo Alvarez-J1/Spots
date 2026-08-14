@@ -254,6 +254,7 @@ function getCardElement(data) {
 }
 
 let lastFocusedElement;
+let activeDialogTrigger;
 
 function getFocusableElements(modal) {
   return Array.from(modal.querySelectorAll(FOCUSABLE_SELECTOR));
