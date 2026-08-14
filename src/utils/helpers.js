@@ -28,7 +28,7 @@ export function setButtonText(
 }
 
 export function showFormError(formEl, message) {
-  let errorEl = formEl.querySelector(".modal__form-error");
+  let errorEl = formEl.querySelector(`.${FORM_ERROR_CLASS}`);
   if (!errorEl) {
     errorEl = document.createElement("p");
     errorEl.className = FORM_ERROR_CLASS;
