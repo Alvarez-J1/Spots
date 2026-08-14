@@ -42,7 +42,7 @@ export function showFormError(formEl, message) {
 }
 
 export function clearFormError(formEl) {
-  const errorEl = formEl.querySelector(".modal__form-error");
+  const errorEl = formEl.querySelector(`.${FORM_ERROR_CLASS}`);
   if (errorEl) {
     errorEl.hidden = true;
     errorEl.textContent = "";
