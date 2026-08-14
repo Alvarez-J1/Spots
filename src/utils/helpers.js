@@ -31,7 +31,7 @@ export function showFormError(formEl, message) {
   let errorEl = formEl.querySelector(".modal__form-error");
   if (!errorEl) {
     errorEl = document.createElement("p");
-    errorEl.className = "modal__form-error";
+    errorEl.className = FORM_ERROR_CLASS;
     errorEl.setAttribute("role", "alert");
     errorEl.setAttribute("aria-live", "assertive");
     formEl.prepend(errorEl);
