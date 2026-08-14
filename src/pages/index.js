@@ -322,6 +322,8 @@ function closeModal(modal) {
   if (lastFocusedElement?.isConnected) {
     lastFocusedElement.focus({ preventScroll: true });
   }
+  activeDialogTrigger?.setAttribute("aria-expanded", "false");
+  activeDialogTrigger = undefined;
   lastFocusedElement = undefined;
 }
 
