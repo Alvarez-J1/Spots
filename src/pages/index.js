@@ -355,6 +355,7 @@ function handleModalKeydown(event) {
   }
 
   if (event.key === "Escape") {
+    event.preventDefault();
     closeModal(openModal);
   } else if (event.key === "Tab") {
     trapModalFocus(event, openModal);
