@@ -45,6 +45,7 @@ export function showFormError(formEl, message) {
   errorEl.textContent =
     message || "Something went wrong. Please try again.";
   errorEl.hidden = false;
+  formEl.setAttribute("aria-describedby", errorEl.id);
 }
 
 export function clearFormError(formEl) {
