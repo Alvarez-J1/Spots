@@ -81,6 +81,7 @@ const previewModalImageEl = previewModal.querySelector(".modal__image");
 const previewModalCaptionEl = previewModal.querySelector(".modal__caption");
 const FOCUSABLE_SELECTOR =
   "a[href], button:not([disabled]), input:not([disabled]), textarea:not([disabled]), select:not([disabled]), [tabindex]:not([tabindex='-1'])";
+const DIALOG_TRIGGER_SELECTOR = "[aria-haspopup='dialog'][aria-controls]";
 
 let selectedCard;
 let selectedCardId;
