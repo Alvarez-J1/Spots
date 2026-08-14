@@ -1,3 +1,5 @@
+const FORM_ERROR_CLASS = "modal__form-error";
+
 export function setButtonText(
   submitBtn,
   isLoading,
