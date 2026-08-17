@@ -19,6 +19,12 @@ const showInputError = (formEl, inputEl, errorMsg, config) => {
   }
 };
 
+const getDescribedByIds = (element) =>
+  element
+    .getAttribute("aria-describedby")
+    ?.split(" ")
+    .filter(Boolean) || [];
+
 const hideInputError = (formEl, inputEl, config) => {
   const errorMsgEl = formEl.querySelector(`#${inputEl.id}-error`);
   if (errorMsgEl) {
