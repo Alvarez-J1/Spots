@@ -1,6 +1,6 @@
 # Spots
 
-Spots is a responsive, single-page social app where users manage a profile and share image "spots." It fetches data from a REST API and supports the full set of CRUD interactions - editing the profile and avatar, adding and deleting posts, and liking/unliking cards - all wrapped in accessible modals with real-time form validation.
+Spots is a responsive, single-page social app where users manage a profile and share image "spots." It fetches data from a REST API and supports the full set of CRUD interactions - editing the profile and avatar, adding and deleting posts, and liking/unliking cards - all wrapped in accessible modals with real-time form validation
 
 ## Live Demo
 
