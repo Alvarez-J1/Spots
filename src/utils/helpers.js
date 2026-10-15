@@ -45,7 +45,11 @@ export function showFormError(formEl, message) {
   errorEl.textContent =
     message || "Something went wrong. Please try again.";
   errorEl.hidden = false;
-  formEl.setAttribute("aria-describedby", errorEl.id);
+  const descriptionIds = new Set(
+    formEl.getAttribute("aria-describedby")?.split(/\s+/).filter(Boolean) || []
+  );
+  descriptionIds.add(errorEl.id);
+  formEl.setAttribute("aria-describedby", Array.from(descriptionIds).join(" "));
 }
 
 export function clearFormError(formEl) {
