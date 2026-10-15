@@ -138,11 +138,13 @@ const PLACEHOLDER_IMAGE =
   "data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='400' height='400'%3E%3Crect width='100%25' height='100%25' fill='%23ece3cf'/%3E%3Ctext x='50%25' y='50%25' fill='%23a89c80' font-family='Poppins, Arial, sans-serif' font-size='22' text-anchor='middle' dominant-baseline='middle'%3EImage unavailable%3C/text%3E%3C/svg%3E";
 
 profileAvatar.addEventListener("error", () => {
+  if (profileAvatar.getAttribute("src") === PLACEHOLDER_IMAGE) return;
   profileAvatar.src = PLACEHOLDER_IMAGE;
   profileAvatar.alt = UNAVAILABLE_PROFILE_AVATAR_ALT;
 });
 
 previewModalImageEl.addEventListener("error", () => {
+  if (previewModalImageEl.getAttribute("src") === PLACEHOLDER_IMAGE) return;
   const caption = previewModalCaptionEl.textContent;
   previewModalImageEl.src = PLACEHOLDER_IMAGE;
   previewModalImageEl.alt = caption
@@ -229,6 +231,7 @@ function getCardElement(data) {
   cardImageEl.alt = "";
   cardRemoveBtn.setAttribute("aria-label", `Delete ${data.name}`);
   cardImageEl.addEventListener("error", () => {
+    if (cardImageEl.getAttribute("src") === PLACEHOLDER_IMAGE) return;
     cardImageEl.src = PLACEHOLDER_IMAGE;
   });
   cardImageEl.src = data.link;
