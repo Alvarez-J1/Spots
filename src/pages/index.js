@@ -293,6 +293,7 @@ function openModal(modal) {
   lastFocusedElement = document.activeElement;
   activeDialogTrigger = getDialogTrigger(lastFocusedElement, modal);
   activeDialogTrigger?.setAttribute("aria-expanded", "true");
+  modal.inert = false;
   modal.classList.add("modal_opened");
   modal.setAttribute("aria-hidden", "false");
   document.body.classList.add("modal-open");
@@ -328,6 +329,7 @@ function closeModal(modal) {
   if (lastFocusedElement?.isConnected) {
     lastFocusedElement.focus({ preventScroll: true });
   }
+  modal.inert = true;
   modal.classList.remove("modal_opened");
   modal.setAttribute("aria-hidden", "true");
   activeDialogTrigger?.setAttribute("aria-expanded", "false");
