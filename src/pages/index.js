@@ -417,7 +417,7 @@ function handleDeleteCard(cardElement, cardId) {
 
 function handleEditFormSubmit(evt) {
   evt.preventDefault();
-  const form = evt.target;
+  const form = evt.currentTarget;
   clearFormError(form);
   const submitBtn = getSubmitButton(form, evt);
   setFormBusy(form, true);
@@ -447,7 +447,7 @@ function handleEditFormSubmit(evt) {
 
 function handleAvatarFormSubmit(evt) {
   evt.preventDefault();
-  const form = evt.target;
+  const form = evt.currentTarget;
   clearFormError(form);
   const submitBtn = getSubmitButton(form, evt);
   setFormBusy(form, true);
@@ -474,7 +474,7 @@ function handleAvatarFormSubmit(evt) {
 
 function handleDeleteSubmit(evt) {
   evt.preventDefault();
-  const form = evt.target;
+  const form = evt.currentTarget;
   clearFormError(form);
   if (!selectedCard || !selectedCardId) {
     showFormError(form, MISSING_DELETE_SELECTION_MESSAGE);
@@ -510,7 +510,7 @@ function renderCard(item, method = "prepend") {
 
 function handleAddCardSubmit(evt) {
   evt.preventDefault();
-  const form = evt.target;
+  const form = evt.currentTarget;
   clearFormError(form);
   const submitBtn = getSubmitButton(form, evt);
   setFormBusy(form, true);
