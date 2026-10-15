@@ -233,19 +233,19 @@ function getCardElement(data) {
   });
   cardImageEl.src = data.link;
 
-  cardImageBtn.addEventListener("click", () => {
+  cardImageBtn.addEventListener("click", (event) => {
     previewModalCaptionEl.textContent = data.name;
     previewModalImageEl.alt = data.name;
     previewModalImageEl.src = data.link;
-    openModal(previewModal);
+    openModal(previewModal, event.currentTarget);
   });
 
   cardLikeBtn.addEventListener("click", (evt) => {
     handleLike(evt, data._id);
   });
 
-  cardRemoveBtn.addEventListener("click", () =>
-    handleDeleteCard(cardElement, data._id)
+  cardRemoveBtn.addEventListener("click", (event) =>
+    handleDeleteCard(cardElement, data._id, event.currentTarget)
   );
   return cardElement;
 }
@@ -283,7 +283,7 @@ function getInitialModalFocusElement(modal) {
   );
 }
 
-function openModal(modal) {
+function openModal(modal, trigger = document.activeElement) {
   if (!modal) {
     return;
   }
@@ -292,7 +292,7 @@ function openModal(modal) {
     return;
   }
 
-  lastFocusedElement = document.activeElement;
+  lastFocusedElement = trigger;
   activeDialogTrigger = getDialogTrigger(lastFocusedElement, modal);
   activeDialogTrigger?.setAttribute("aria-expanded", "true");
   modal.inert = false;
@@ -418,7 +418,7 @@ function handleLike(evt, cardId) {
     });
 }
 
-function handleDeleteCard(cardElement, cardId) {
+function handleDeleteCard(cardElement, cardId, trigger) {
   selectedCard = cardElement;
   selectedCardId = cardId;
   const cardName = cardElement
@@ -427,7 +427,7 @@ function handleDeleteCard(cardElement, cardId) {
   deleteTitle.textContent = cardName
     ? `Are you sure you want to delete "${cardName}"?`
     : DELETE_CONFIRMATION_MESSAGE;
-  openModal(deleteModal);
+  openModal(deleteModal, trigger);
 }
 
 function handleEditFormSubmit(evt) {
@@ -553,7 +553,7 @@ function handleAddCardSubmit(evt) {
     });
 }
 
-profileEditButton.addEventListener("click", () => {
+profileEditButton.addEventListener("click", (event) => {
   editModalNameInput.value = profileNameElement.textContent;
   editModalDescriptionInput.value = profileDescriptionElement.textContent;
   resetValidation(
@@ -561,19 +561,19 @@ profileEditButton.addEventListener("click", () => {
     [editModalNameInput, editModalDescriptionInput],
     settings
   );
-  openModal(editProfileModal);
+  openModal(editProfileModal, event.currentTarget);
 });
 
-profileAddButton.addEventListener("click", () => {
+profileAddButton.addEventListener("click", (event) => {
   cardForm.reset();
   resetValidation(cardForm, [cardLinkInput, cardNameInput], settings);
-  openModal(cardModal);
+  openModal(cardModal, event.currentTarget);
 });
 
-avatarModalBtn.addEventListener("click", () => {
+avatarModalBtn.addEventListener("click", (event) => {
   avatarForm.reset();
   resetValidation(avatarForm, [avatarInput], settings);
-  openModal(avatarModal);
+  openModal(avatarModal, event.currentTarget);
 });
 
 avatarForm.addEventListener("submit", handleAvatarFormSubmit);
