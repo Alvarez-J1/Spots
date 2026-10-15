@@ -183,7 +183,7 @@ function updateProfileAvatarAlt(name) {
 }
 
 function updateCardsEmptyState() {
-  cardsEmpty.hidden = cardsList.childElementCount > 0;
+  cardsEmpty.hidden = Boolean(cardsList.querySelector(".card"));
 }
 
 function showCardsStatus(message) {
