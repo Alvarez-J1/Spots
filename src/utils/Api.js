@@ -17,6 +17,7 @@ export default class Api {
 
   _processResponse(res) {
     if (res.ok) {
+      if (res.status === 204) return Promise.resolve(null);
       return res.json();
     }
     return res
