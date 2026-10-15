@@ -207,9 +207,10 @@
           </p>
           <form name="profile-form" class="modal__form" novalidate>
             <label for="profile-name-input" class="modal__label">
-              Name
+              <span id="profile-name-input-label">Name</span>
               <input
                 id="profile-name-input"
+                aria-labelledby="profile-name-input-label"
                 type="text"
                 class="modal__input"
                 name="name"
@@ -229,9 +230,10 @@
               ></span>
             </label>
             <label for="profile-description-input" class="modal__label">
-              Description
+              <span id="profile-description-input-label">Description</span>
               <input
                 id="profile-description-input"
+                aria-labelledby="profile-description-input-label"
                 type="text"
                 class="modal__input"
                 name="about"
@@ -281,9 +283,10 @@
           </p>
           <form name="card-form" class="modal__form" novalidate>
             <label for="add-card-link-input" class="modal__label">
-              Image link
+              <span id="add-card-link-input-label">Image link</span>
               <input
                 id="add-card-link-input"
+                aria-labelledby="add-card-link-input-label"
                 type="url"
                 class="modal__input"
                 name="link"
@@ -304,9 +307,10 @@
               ></span>
             </label>
             <label for="add-card-name-input" class="modal__label">
-              Caption
+              <span id="add-card-name-input-label">Caption</span>
               <input
                 id="add-card-name-input"
+                aria-labelledby="add-card-name-input-label"
                 type="text"
                 class="modal__input"
                 name="name"
@@ -431,9 +435,10 @@
             for="profile-avatar-input"
             class="modal__label modal__label_type_avatar"
           >
-            Profile Picture
+            <span id="profile-avatar-input-label">Profile Picture</span>
             <input
               id="profile-avatar-input"
+              aria-labelledby="profile-avatar-input-label"
               class="modal__input modal__input_type_avatar"
               name="avatar"
               autocomplete="url"
