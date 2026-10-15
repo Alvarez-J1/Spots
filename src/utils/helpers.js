@@ -57,7 +57,14 @@ export function clearFormError(formEl) {
   if (errorEl) {
     errorEl.hidden = true;
     errorEl.textContent = "";
-    formEl.removeAttribute("aria-describedby");
+    const descriptionIds = (
+      formEl.getAttribute("aria-describedby")?.split(/\s+/).filter(Boolean) || []
+    ).filter((id) => id !== errorEl.id);
+    if (descriptionIds.length) {
+      formEl.setAttribute("aria-describedby", descriptionIds.join(" "));
+    } else {
+      formEl.removeAttribute("aria-describedby");
+    }
   }
 }
 
