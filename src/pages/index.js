@@ -252,7 +252,14 @@ let lastFocusedElement;
 let activeDialogTrigger;
 
 function getFocusableElements(modal) {
-  return Array.from(modal.querySelectorAll(FOCUSABLE_SELECTOR));
+  return Array.from(modal.querySelectorAll(FOCUSABLE_SELECTOR)).filter(
+    (element) =>
+      element.tabIndex >= 0 &&
+      !element.matches(":disabled") &&
+      !element.closest("[hidden], [inert]") &&
+      element.getClientRects().length > 0 &&
+      getComputedStyle(element).visibility === "visible"
+  );
 }
 
 function getDialogTrigger(element, modal) {
@@ -264,9 +271,10 @@ function getDialogTrigger(element, modal) {
 }
 
 function getInitialModalFocusElement(modal) {
+  const focusableElements = getFocusableElements(modal);
   return (
-    modal.querySelector(".modal__input") ||
-    modal.querySelector(".modal__close-btn")
+    focusableElements.find((element) => element.matches(".modal__input")) ||
+    focusableElements[0]
   );
 }
 
