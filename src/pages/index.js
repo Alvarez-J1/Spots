@@ -41,7 +41,9 @@ const profileDescriptionElement = document.querySelector(
 );
 const profileSection = document.querySelector(".profile");
 const cardsSection = document.querySelector(".cards");
-const mainContent = document.getElementById("main-content");
+const modalBackgroundElements = document.querySelectorAll(
+  ".skip-link, .header, #main-content, .footer"
+);
 const profileLoadError = document.getElementById("profile-load-error");
 const editModalDescriptionInput = editProfileModal.querySelector(
   "#profile-description-input"
@@ -297,7 +299,7 @@ function openModal(modal) {
   modal.classList.add("modal_opened");
   modal.setAttribute("aria-hidden", "false");
   document.body.classList.add("modal-open");
-  mainContent.inert = true;
+  modalBackgroundElements.forEach((element) => { element.inert = true; });
   document.addEventListener("keydown", handleModalKeydown);
   modal.querySelectorAll(".modal__form").forEach(clearFormError);
   const initialFocusElement = getInitialModalFocusElement(modal);
@@ -314,7 +316,7 @@ function closeModal(modal) {
   }
 
   document.body.classList.remove("modal-open");
-  mainContent.inert = false;
+  modalBackgroundElements.forEach((element) => { element.inert = false; });
   document.removeEventListener("keydown", handleModalKeydown);
   if (modal === previewModal) {
     previewModalImageEl.removeAttribute("src");
