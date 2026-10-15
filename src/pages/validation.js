@@ -15,7 +15,9 @@ const showInputError = (formEl, inputEl, errorMsg, config) => {
   inputEl.classList.add(config.inputErrorClass);
   inputEl.setAttribute("aria-invalid", "true");
   if (errorMsgEl) {
-    inputEl.setAttribute("aria-describedby", `${inputEl.id}-error`);
+    const descriptionIds = new Set(getDescribedByIds(inputEl));
+    descriptionIds.add(errorMsgEl.id);
+    inputEl.setAttribute("aria-describedby", Array.from(descriptionIds).join(" "));
   }
 };
 
