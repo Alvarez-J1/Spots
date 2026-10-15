@@ -34,7 +34,14 @@ const hideInputError = (formEl, inputEl, config) => {
   }
   inputEl.classList.remove(config.inputErrorClass);
   inputEl.removeAttribute("aria-invalid");
-  inputEl.removeAttribute("aria-describedby");
+  const descriptionIds = getDescribedByIds(inputEl).filter(
+    (id) => id !== errorMsgEl?.id
+  );
+  if (descriptionIds.length) {
+    inputEl.setAttribute("aria-describedby", descriptionIds.join(" "));
+  } else {
+    inputEl.removeAttribute("aria-describedby");
+  }
 };
 const checkInputValidity = (formEl, inputEl, config) => {
   if (!inputEl.validity.valid) {
