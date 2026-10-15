@@ -504,10 +504,12 @@ function handleDeleteSubmit(evt) {
     .removeCard(cardIdToDelete)
     .then(() => {
       cardToDelete.remove();
-      lastFocusedElement = cardsList;
       updateCardsEmptyState();
       clearCardsStatus();
-      closeModal(deleteModal);
+      if (selectedCard === cardToDelete) {
+        lastFocusedElement = cardsList;
+        closeModal(deleteModal);
+      }
     })
     .catch((err) => {
       console.error(err);
