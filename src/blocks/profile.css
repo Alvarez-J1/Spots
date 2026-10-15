@@ -7,7 +7,7 @@
 .profile__avatar-btn {
   position: absolute;
   width: 100%;
-  visibility: hidden;
+  opacity: 0;
   height: 100%;
   display: flex;
   align-items: flex-end;
@@ -27,7 +27,7 @@
 
 .profile__avatar-container:hover .profile__avatar-btn,
 .profile__avatar-btn:focus-visible {
-  visibility: visible;
+  opacity: 1;
   background: rgba(0, 0, 0, 0.5);
 }
 
@@ -161,7 +161,7 @@
   }
 
   .profile__avatar-btn {
-    visibility: visible;
+    opacity: 1;
     background: none;
     border: none;
   }
