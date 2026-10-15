@@ -495,13 +495,15 @@ function handleDeleteSubmit(evt) {
     showFormError(form, MISSING_DELETE_SELECTION_MESSAGE);
     return;
   }
+  const cardToDelete = selectedCard;
+  const cardIdToDelete = selectedCardId;
   const submitBtn = getSubmitButton(form, evt);
   setFormBusy(form, true);
   setButtonText(submitBtn, true, DELETE_BUTTON_TEXT, DELETE_LOADING_TEXT);
   api
-    .removeCard(selectedCardId)
+    .removeCard(cardIdToDelete)
     .then(() => {
-      selectedCard.remove();
+      cardToDelete.remove();
       lastFocusedElement = cardsList;
       updateCardsEmptyState();
       clearCardsStatus();
