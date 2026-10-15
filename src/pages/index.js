@@ -590,8 +590,7 @@ cardForm.addEventListener("submit", handleAddCardSubmit);
 
 deleteForm.addEventListener("submit", handleDeleteSubmit);
 
-cancelBtn.addEventListener("click", (evt) => {
-  evt.preventDefault();
+cancelBtn.addEventListener("click", () => {
   closeModal(deleteModal);
 });
 
