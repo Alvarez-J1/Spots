@@ -312,8 +312,6 @@ function closeModal(modal) {
     return;
   }
 
-  modal.classList.remove("modal_opened");
-  modal.setAttribute("aria-hidden", "true");
   document.body.classList.remove("modal-open");
   mainContent.inert = false;
   document.removeEventListener("keydown", handleModalKeydown);
@@ -330,6 +328,8 @@ function closeModal(modal) {
   if (lastFocusedElement?.isConnected) {
     lastFocusedElement.focus({ preventScroll: true });
   }
+  modal.classList.remove("modal_opened");
+  modal.setAttribute("aria-hidden", "true");
   activeDialogTrigger?.setAttribute("aria-expanded", "false");
   activeDialogTrigger = undefined;
   lastFocusedElement = undefined;
