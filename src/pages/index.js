@@ -271,6 +271,9 @@ function getDialogTrigger(element, modal) {
 }
 
 function getInitialModalFocusElement(modal) {
+  if (modal === deleteModal) {
+    return cancelBtn;
+  }
   const focusableElements = getFocusableElements(modal);
   return (
     focusableElements.find((element) => element.matches(".modal__input")) ||
