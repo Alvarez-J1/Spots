@@ -204,11 +204,7 @@ function getSubmitButton(form, evt) {
 
 function updateLikeButtonState(button, isLiked, cardName = "") {
   button.setAttribute("aria-pressed", isLiked ? "true" : "false");
-  const action = isLiked ? "Unlike" : "Like";
-  button.setAttribute(
-    "aria-label",
-    cardName ? `${action} ${cardName}` : action
-  );
+  button.setAttribute("aria-label", cardName ? `Like ${cardName}` : "Like");
 }
 
 function getCardElement(data) {
