@@ -24,7 +24,7 @@ const showInputError = (formEl, inputEl, errorMsg, config) => {
 const getDescribedByIds = (element) =>
   element
     .getAttribute("aria-describedby")
-    ?.split(" ")
+    ?.split(/\s+/)
     .filter(Boolean) || [];
 
 const hideInputError = (formEl, inputEl, config) => {
