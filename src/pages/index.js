@@ -219,7 +219,6 @@ function getCardElement(data) {
 
   if (data.isLiked) {
     cardLikeBtn.classList.add("card__like-btn_liked");
-    cardElement.classList.add("card_liked");
   }
   updateLikeButtonState(cardLikeBtn, Boolean(data.isLiked), data.name);
 
