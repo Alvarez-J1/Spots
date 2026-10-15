@@ -38,7 +38,6 @@ export function showFormError(formEl, message) {
     errorEl.id = getFormErrorId(formEl);
     errorEl.className = FORM_ERROR_CLASS;
     errorEl.setAttribute("role", "alert");
-    errorEl.setAttribute("aria-live", "assertive");
     errorEl.setAttribute("aria-atomic", "true");
     formEl.prepend(errorEl);
   }
