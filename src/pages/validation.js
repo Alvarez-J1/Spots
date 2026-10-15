@@ -96,6 +96,16 @@ const setEventListeners = (formEl, config) => {
 
   toggleButtonState(inputList, buttonElement, config);
 
+  formEl.addEventListener("submit", (event) => {
+    const firstInvalidInput = inputList.find((input) => !input.validity.valid);
+    if (firstInvalidInput) {
+      event.preventDefault();
+      event.stopImmediatePropagation();
+      inputList.forEach((input) => checkInputValidity(formEl, input, config));
+      firstInvalidInput.focus();
+    }
+  }, { capture: true });
+
   formEl.addEventListener("reset", () => {
     disableButton(buttonElement, config);
   });
