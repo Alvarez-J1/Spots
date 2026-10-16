@@ -97,6 +97,11 @@ const setEventListeners = (formEl, config) => {
   toggleButtonState(inputList, buttonElement, config);
 
   formEl.addEventListener("submit", (event) => {
+    if (formEl.getAttribute("aria-busy") === "true") {
+      event.preventDefault();
+      event.stopImmediatePropagation();
+      return;
+    }
     const firstInvalidInput = inputList.find((input) => !input.validity.valid);
     if (firstInvalidInput) {
       event.preventDefault();
