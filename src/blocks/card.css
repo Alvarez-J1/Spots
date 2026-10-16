@@ -86,12 +86,12 @@
 
 @media (hover: hover) {
   .card__remove-btn {
-    visibility: hidden;
+    opacity: 0;
   }
 
   .card:hover .card__remove-btn,
   .card:focus-within .card__remove-btn {
-    visibility: visible;
+    opacity: 1;
   }
 }
 
