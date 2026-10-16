@@ -25,7 +25,7 @@ export default class Api {
       .catch(() => null)
       .then((body) => {
         const message =
-          (body && body.message) ||
+          (typeof body?.message === "string" && body.message.trim()) ||
           res.statusText ||
           `Request failed with status ${res.status}`;
         return Promise.reject(new Error(message));
