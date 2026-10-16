@@ -4,6 +4,7 @@ import {
   showFormError,
   clearFormError,
   setFormBusy,
+  announceStatus,
 } from "../utils/helpers.js";
 import editBtnSrc from "../images/editBtnSrc.svg";
 import plusSrc from "../images/plus.svg";
@@ -463,6 +464,7 @@ function handleEditFormSubmit(evt) {
       updateProfileAvatarAlt(data.name);
       form.reset();
       closeModal(editProfileModal);
+      announceStatus("Profile updated.");
     })
     .catch((err) => {
       console.error(err);

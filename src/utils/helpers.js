@@ -70,6 +70,11 @@ export function clearFormError(formEl) {
   }
 }
 
+/** Announce completed actions without moving keyboard focus. */
+export function announceStatus(message) {
+  document.getElementById("action-status")?.replaceChildren(message);
+}
+
 export function setFormBusy(formEl, isBusy) {
   if (!formEl) {
     return;
