@@ -240,6 +240,7 @@ function getCardElement(data) {
   cardImageEl.addEventListener("error", () => {
     if (cardImageEl.getAttribute("src") === PLACEHOLDER_IMAGE) return;
     cardImageEl.src = PLACEHOLDER_IMAGE;
+    cardImageBtn.setAttribute("aria-label", `View ${data.name} in full size (image unavailable)`);
   });
   cardImageEl.src = data.link;
 
