@@ -1,4 +1,5 @@
 const FORM_ERROR_CLASS = "modal__form-error";
+const buttonAccessibleNames = new WeakMap();
 
 function getFormErrorId(formEl) {
   return `${formEl.id || formEl.name || "modal"}-form-error`;
@@ -15,11 +16,21 @@ export function setButtonText(
   }
 
   if (isLoading) {
+    if (!buttonAccessibleNames.has(submitBtn)) {
+      buttonAccessibleNames.set(submitBtn, submitBtn.getAttribute("aria-label"));
+    }
+    const originalName = buttonAccessibleNames.get(submitBtn);
+    if (originalName) {
+      submitBtn.setAttribute("aria-label", originalName + " (" + loadingText + ")");
+    }
     submitBtn.textContent = loadingText;
     submitBtn.disabled = true;
     submitBtn.setAttribute("aria-disabled", "true");
     submitBtn.setAttribute("aria-busy", "true");
   } else {
+    const originalName = buttonAccessibleNames.get(submitBtn);
+    if (originalName) submitBtn.setAttribute("aria-label", originalName);
+    buttonAccessibleNames.delete(submitBtn);
     submitBtn.textContent = defaultText;
     submitBtn.removeAttribute("aria-busy");
     if (!submitBtn.classList.contains("modal__submit-btn_disabled")) {
