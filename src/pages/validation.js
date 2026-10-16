@@ -1,3 +1,5 @@
+import { addDescription, removeDescription } from "../utils/aria.js";
+
 export const settings = {
   formSelector: ".modal__form",
   inputSelector: ".modal__input",
@@ -14,17 +16,9 @@ const showInputError = (formEl, inputEl, errorMsg, config) => {
   inputEl.classList.add(config.inputErrorClass);
   inputEl.setAttribute("aria-invalid", "true");
   if (errorMsgEl) {
-    const descriptionIds = new Set(getDescribedByIds(inputEl));
-    descriptionIds.add(errorMsgEl.id);
-    inputEl.setAttribute("aria-describedby", Array.from(descriptionIds).join(" "));
+    addDescription(inputEl, errorMsgEl.id);
   }
 };
-
-const getDescribedByIds = (element) =>
-  element
-    .getAttribute("aria-describedby")
-    ?.split(/\s+/)
-    .filter(Boolean) || [];
 
 const hideInputError = (formEl, inputEl, config) => {
   const errorMsgEl = formEl.querySelector(`#${inputEl.id}-error`);
@@ -33,14 +27,7 @@ const hideInputError = (formEl, inputEl, config) => {
   }
   inputEl.classList.remove(config.inputErrorClass);
   inputEl.removeAttribute("aria-invalid");
-  const descriptionIds = getDescribedByIds(inputEl).filter(
-    (id) => id !== errorMsgEl?.id
-  );
-  if (descriptionIds.length) {
-    inputEl.setAttribute("aria-describedby", descriptionIds.join(" "));
-  } else {
-    inputEl.removeAttribute("aria-describedby");
-  }
+  removeDescription(inputEl, `${inputEl.id}-error`);
 };
 const checkInputValidity = (formEl, inputEl, config) => {
   if (inputEl.willValidate && !inputEl.validity.valid) {
