@@ -3,7 +3,6 @@
   "version": "0.1.0",
   "private": true,
   "description": "This project is a webpage containing a profile and multiple different images along with their names. The project is made so all the elements are displayed correctly on popular screen sizes.",
-  "main": "index.js",
   "scripts": {
     "build": "webpack --mode production",
     "dev": "webpack serve --mode development",
