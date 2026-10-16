@@ -5,6 +5,7 @@
   "description": "This project is a webpage containing a profile and multiple different images along with their names. The project is made so all the elements are displayed correctly on popular screen sizes.",
   "scripts": {
     "build": "webpack --mode production",
+    "test": "node --test",
     "dev": "webpack serve --mode development",
     "predeploy": "npm run build",
     "deploy": "gh-pages -d dist"
