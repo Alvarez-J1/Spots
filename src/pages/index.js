@@ -306,6 +306,7 @@ function openModal(modal, trigger = document.activeElement) {
   activeDialogTrigger?.setAttribute("aria-expanded", "true");
   modal.inert = false;
   modal.classList.add("modal_opened");
+  modal.scrollTop = 0;
   modal.setAttribute("aria-hidden", "false");
   document.body.classList.add("modal-open");
   modalBackgroundElements.forEach((element) => { element.inert = true; });
