@@ -8,6 +8,7 @@ import {
 import editBtnSrc from "../images/editBtnSrc.svg";
 import plusSrc from "../images/plus.svg";
 import Api from "../utils/Api.js";
+import { addDescription, removeDescription } from "../utils/aria.js";
 import "./index.css";
 import {
   enableValidation,
@@ -198,13 +199,13 @@ function updateCardsEmptyState() {
 function showCardsStatus(message) {
   cardsStatus.textContent = message || DEFAULT_CARDS_STATUS_MESSAGE;
   cardsStatus.hidden = false;
-  cardsSection.setAttribute("aria-describedby", "cards-status");
+  addDescription(cardsSection, "cards-status");
 }
 
 function clearCardsStatus() {
   cardsStatus.hidden = true;
   cardsStatus.textContent = "";
-  cardsSection.removeAttribute("aria-describedby");
+  removeDescription(cardsSection, "cards-status");
 }
 
 function getSubmitButton(form, evt) {
