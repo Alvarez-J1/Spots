@@ -26,6 +26,7 @@ export function setButtonText(
       submitBtn.disabled = false;
       submitBtn.removeAttribute("aria-disabled");
     } else {
+      submitBtn.disabled = true;
       submitBtn.setAttribute("aria-disabled", "true");
     }
   }
