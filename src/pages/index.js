@@ -527,6 +527,7 @@ function handleDeleteSubmit(evt) {
         lastFocusedElement = cardsList;
         closeModal(deleteModal);
       }
+      announceStatus("Post deleted.");
     })
     .catch((err) => {
       console.error(err);
