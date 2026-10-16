@@ -355,7 +355,8 @@ function trapModalFocus(event, modal) {
 
   if (!modal.contains(document.activeElement)) {
     event.preventDefault();
-    firstFocusableElement.focus({ preventScroll: true });
+    const target = event.shiftKey ? lastFocusableElement : firstFocusableElement;
+    target.focus({ preventScroll: true });
   } else if (
     event.shiftKey &&
     document.activeElement === firstFocusableElement
