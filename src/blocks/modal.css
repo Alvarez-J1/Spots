@@ -13,6 +13,7 @@
   padding: 0 20px;
   opacity: 0;
   z-index: 100;
+  overflow-y: auto;
   transition: visibility 0s 0.5s, opacity 0.5s ease-in-out;
 }
 
@@ -20,6 +21,12 @@
   visibility: visible;
   opacity: 1;
   transition: visibility 0s, opacity 0.5s ease-in-out;
+}
+
+.modal__content,
+.modal__content-preview {
+  flex-shrink: 0;
+  margin-block: auto;
 }
 
 .modal__content {
