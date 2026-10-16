@@ -43,7 +43,7 @@ const hideInputError = (formEl, inputEl, config) => {
   }
 };
 const checkInputValidity = (formEl, inputEl, config) => {
-  if (!inputEl.validity.valid) {
+  if (inputEl.willValidate && !inputEl.validity.valid) {
     showInputError(formEl, inputEl, inputEl.validationMessage, config);
   } else {
     hideInputError(formEl, inputEl, config);
@@ -51,7 +51,7 @@ const checkInputValidity = (formEl, inputEl, config) => {
 };
 
 const hasInvalidInput = (inputList) => {
-  return inputList.some((input) => !input.validity.valid);
+  return inputList.some((input) => input.willValidate && !input.validity.valid);
 };
 
 const toggleButtonState = (inputList, buttonEl, config) => {
@@ -106,7 +106,9 @@ const setEventListeners = (formEl, config) => {
       event.stopImmediatePropagation();
       return;
     }
-    const firstInvalidInput = inputList.find((input) => !input.validity.valid);
+    const firstInvalidInput = inputList.find(
+      (input) => input.willValidate && !input.validity.valid
+    );
     if (firstInvalidInput) {
       event.preventDefault();
       event.stopImmediatePropagation();
