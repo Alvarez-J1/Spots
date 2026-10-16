@@ -540,9 +540,13 @@ function handleDeleteSubmit(evt) {
     });
 }
 
-function renderCard(item, method = "prepend") {
+function renderCard(item, position = "prepend") {
   const cardElement = getCardElement(item);
-  cardsList[method](cardElement);
+  if (position === "append") {
+    cardsList.append(cardElement);
+  } else {
+    cardsList.prepend(cardElement);
+  }
   updateCardsEmptyState();
 }
 
