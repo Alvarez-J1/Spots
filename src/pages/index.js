@@ -91,10 +91,15 @@ let selectedCardId;
 const modals = document.querySelectorAll(".modal");
 
 modals.forEach((modal) => {
+  let pointerStartedOnOverlay = false;
+  modal.addEventListener("pointerdown", (event) => {
+    pointerStartedOnOverlay = event.target === modal;
+  });
   modal.addEventListener("click", (event) => {
-    if (event.target === modal) {
+    if (event.target === modal && pointerStartedOnOverlay) {
       closeModal(modal);
     }
+    pointerStartedOnOverlay = false;
   });
 });
 
