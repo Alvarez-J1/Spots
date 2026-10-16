@@ -1,10 +1,27 @@
+/**
+ * @typedef {Object} ApiUser
+ * @property {string} name
+ * @property {string} about
+ * @property {string} avatar
+ *
+ * @typedef {Object} ApiCard
+ * @property {string} _id
+ * @property {string} name
+ * @property {string} link
+ * @property {boolean} isLiked
+ */
+
 export default class Api {
+  /** @param {{baseUrl: string, headers: Record<string, string>}} options */
   constructor({ baseUrl, headers }) {
     this._baseUrl = baseUrl;
     this._headers = headers;
   }
 
-  // Unified internal method for making requests
+  /**
+   * @param {string} endpoint
+   * @param {RequestInit} [options]
+   */
   _request(endpoint, options = {}) {
     const finalOptions = {
       headers: this._headers,
@@ -15,6 +32,7 @@ export default class Api {
     return fetch(url, finalOptions).then(this._processResponse);
   }
 
+  /** @param {Response} res */
   _processResponse(res) {
     if (res.ok) {
       if (res.status === 204) return Promise.resolve(null);
@@ -32,10 +50,15 @@ export default class Api {
       });
   }
 
+  /** @returns {Promise<ApiUser>} */
   getUserInfo() {
     return this._request("/users/me");
   }
 
+  /**
+   * @param {Pick<ApiUser, "name" | "about">} profile
+   * @returns {Promise<ApiUser>}
+   */
   editUserInfo({ name, about }) {
     return this._request("/users/me", {
       method: "PATCH",
@@ -46,6 +69,10 @@ export default class Api {
     });
   }
 
+  /**
+   * @param {string} avatar
+   * @returns {Promise<ApiUser>}
+   */
   editAvatar(avatar) {
     return this._request("/users/me/avatar", {
       method: "PATCH",
@@ -53,10 +80,15 @@ export default class Api {
     });
   }
 
+  /** @returns {Promise<ApiCard[]>} */
   getInitialCards() {
     return this._request("/cards");
   }
 
+  /**
+   * @param {Pick<ApiCard, "name" | "link">} card
+   * @returns {Promise<ApiCard>}
+   */
   addNewCard({ name, link }) {
     return this._request("/cards", {
       method: "POST",
@@ -64,18 +96,25 @@ export default class Api {
     });
   }
 
+  /** @param {string} cardId */
   removeCard(cardId) {
     return this._request(`/cards/${encodeURIComponent(cardId)}`, {
       method: "DELETE",
     });
   }
 
+  /**
+   * @param {string} cardId
+   * @param {boolean} isLiked
+   * @returns {Promise<ApiCard>}
+   */
   changeLikeStatus(cardId, isLiked) {
     return this._request(`/cards/${encodeURIComponent(cardId)}/likes`, {
       method: isLiked ? "DELETE" : "PUT",
     });
   }
 
+  /** @returns {Promise<[ApiCard[], ApiUser]>} */
   getAppInfo() {
     return Promise.all([this.getInitialCards(), this.getUserInfo()]);
   }
