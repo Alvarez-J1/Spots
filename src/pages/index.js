@@ -563,6 +563,7 @@ function handleAddCardSubmit(evt) {
       form.reset();
       disableButton(cardSubmitButton, settings);
       closeModal(cardModal);
+      announceStatus("Post created.");
     })
     .catch((err) => {
       console.error(err);
