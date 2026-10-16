@@ -62,8 +62,12 @@ const toggleButtonState = (inputList, buttonEl, config) => {
   if (hasInvalidInput(inputList)) {
     disableButton(buttonEl, config);
   } else {
-    buttonEl.disabled = false;
-    buttonEl.removeAttribute("aria-disabled");
+    buttonEl.disabled = buttonEl.form?.getAttribute("aria-busy") === "true";
+    if (buttonEl.disabled) {
+      buttonEl.setAttribute("aria-disabled", "true");
+    } else {
+      buttonEl.removeAttribute("aria-disabled");
+    }
     buttonEl.classList.remove(config.inactiveButtonClass);
   }
 };
