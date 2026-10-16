@@ -370,6 +370,7 @@ function trapModalFocus(event, modal) {
 }
 
 function handleModalKeydown(event) {
+  if (event.isComposing) return;
   const openModal = document.querySelector(".modal_opened");
   if (!openModal) {
     return;
