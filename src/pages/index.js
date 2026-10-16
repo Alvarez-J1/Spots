@@ -331,8 +331,10 @@ function closeModal(modal) {
     selectedCard = undefined;
     selectedCardId = undefined;
   }
-  if (lastFocusedElement?.isConnected) {
+  if (lastFocusedElement?.isConnected && !lastFocusedElement.matches(":disabled")) {
     lastFocusedElement.focus({ preventScroll: true });
+  } else {
+    cardsList.focus({ preventScroll: true });
   }
   modal.inert = true;
   modal.classList.remove("modal_opened");
