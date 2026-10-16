@@ -116,6 +116,7 @@ const setEventListeners = (formEl, config) => {
   }, { capture: true });
 
   formEl.addEventListener("reset", () => {
+    inputList.forEach((input) => hideInputError(formEl, input, config));
     disableButton(buttonElement, config);
   });
 
