@@ -1,3 +1,5 @@
+import { addDescription, removeDescription } from "./aria.js";
+
 const FORM_ERROR_CLASS = "modal__form-error";
 const buttonAccessibleNames = new WeakMap();
 
@@ -56,11 +58,7 @@ export function showFormError(formEl, message) {
   errorEl.textContent =
     message || "Something went wrong. Please try again.";
   errorEl.hidden = false;
-  const descriptionIds = new Set(
-    formEl.getAttribute("aria-describedby")?.split(/\s+/).filter(Boolean) || []
-  );
-  descriptionIds.add(errorEl.id);
-  formEl.setAttribute("aria-describedby", Array.from(descriptionIds).join(" "));
+  addDescription(formEl, errorEl.id);
 }
 
 export function clearFormError(formEl) {
@@ -68,14 +66,7 @@ export function clearFormError(formEl) {
   if (errorEl) {
     errorEl.hidden = true;
     errorEl.textContent = "";
-    const descriptionIds = (
-      formEl.getAttribute("aria-describedby")?.split(/\s+/).filter(Boolean) || []
-    ).filter((id) => id !== errorEl.id);
-    if (descriptionIds.length) {
-      formEl.setAttribute("aria-describedby", descriptionIds.join(" "));
-    } else {
-      formEl.removeAttribute("aria-describedby");
-    }
+    removeDescription(formEl, errorEl.id);
   }
 }
 
