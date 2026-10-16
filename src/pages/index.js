@@ -492,6 +492,7 @@ function handleAvatarFormSubmit(evt) {
       updateProfileAvatarAlt(profileNameElement.textContent.trim());
       form.reset();
       closeModal(avatarModal);
+      announceStatus("Profile picture updated.");
     })
     .catch((err) => {
       console.error(err);
